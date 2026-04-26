@@ -32,7 +32,7 @@ DaivAI is a modern, responsive React-based AI chat application designed to repli
    ```
 4. Open your browser and visit the local URL provided by Vite (usually `http://localhost:5173`).
 
-### Environment Variables (Optional - for AI integration)
+### Environment Variables (For AI integration)
 
 If you want to enable real AI responses, In a `.env` file in the root directory and add:
 
