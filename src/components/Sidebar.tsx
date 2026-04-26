@@ -62,9 +62,8 @@ export default function Sidebar({
       )}
 
       <div
-        className={`fixed md:static inset-y-0 left-0 z-30 bg-[#f5f5f5] border-r border-gray-200 flex flex-col transform transition-transform duration-300 ${
-          isOpen ? 'translate-x-0 w-80' : '-translate-x-full md:translate-x-0 md:w-0 md:hidden'
-        }`}
+        className={`fixed md:static inset-y-0 left-0 z-30 bg-[#f5f5f5] border-r border-gray-200 flex flex-col transform transition-transform duration-300 ${isOpen ? 'translate-x-0 w-80' : '-translate-x-full md:translate-x-0 md:w-0 md:hidden'
+          }`}
         style={{ width: isOpen ? '320px' : undefined }}
       >
         {/* Header */}
@@ -97,9 +96,8 @@ export default function Sidebar({
           {chats.map(chat => (
             <div
               key={chat.id}
-              className={`group relative flex items-start gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-colors ${
-                activeChatId === chat.id ? 'bg-white shadow-sm border border-[#00A8324D]' : 'hover:bg-gray-200/60 border border-transparent'
-              }`}
+              className={`group relative flex items-start gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-colors ${activeChatId === chat.id ? 'bg-white shadow-sm border border-[#00A8324D]' : 'hover:bg-gray-200/60 border border-transparent'
+                }`}
               onClick={() => setActiveChatId(chat.id)}
             >
               <MessageSquare
@@ -175,9 +173,8 @@ export default function Sidebar({
               ].map(({ icon: Icon, label, color, iconColor }, i, arr) => (
                 <button
                   key={label}
-                  className={`w-full flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50 transition-colors text-left ${
-                    i < arr.length - 1 ? 'border-b border-gray-100' : ''
-                  }`}
+                  className={`w-full flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50 transition-colors text-left ${i < arr.length - 1 ? 'border-b border-gray-100' : ''
+                    }`}
                   onClick={() => setUserMenuOpen(false)}
                 >
                   <Icon size={18} className={iconColor} />

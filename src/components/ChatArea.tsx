@@ -105,26 +105,26 @@ export default function ChatArea({
   return (
     <div className="flex-1 flex flex-col h-full bg-white relative">
       {/* Header - Exact 67px height */}
-      <header className="h-[67px] flex items-center px-4 border-b border-[#D1D5DB] bg-[#F8F9FA] gap-4">
+      <header className="h-[67px] flex items-center px-4 border-b border-[#D1D5DB] bg-[#F8F9FA] gap-2 sm:gap-4">
         <button
-          className="p-2 text-[#6B6B6B] hover:bg-gray-200 rounded-lg transition-colors"
+          className="p-2 text-[#6B6B6B] hover:bg-gray-200 rounded-lg transition-colors flex-shrink-0"
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           <Menu size={20} />
         </button>
 
-        <div className="relative">
-          {/* Engine Button - Exact 163.92px width, 42px height */}
+        <div className="relative flex-1 sm:flex-none">
+          {/* Engine Button - Responsive width */}
           <button
-            className="flex items-center gap-2 px-3 py-2 w-[163.92px] h-[42px] bg-[#E5E7EB] hover:bg-gray-300 text-[#1A1A1A] rounded-lg text-xs font-normal transition-colors border border-[#D1D5DB]"
+            className="flex items-center gap-2 px-3 py-2 w-full sm:w-[163.92px] h-[42px] bg-[#E5E7EB] hover:bg-gray-300 text-[#1A1A1A] rounded-lg text-xs font-normal transition-colors border border-[#D1D5DB]"
             onClick={() => setEngineDropdownOpen(!engineDropdownOpen)}
           >
-            {/* Engine Icon Container - Exact shadow/size */}
-            <div className="w-6 h-6 bg-[#00A832] rounded-[6px] flex items-center justify-center text-white shadow-[0px_0px_21px_rgba(0,168,50,0.32)]">
+            {/* Engine Icon Container */}
+            <div className="w-6 h-6 bg-[#00A832] rounded-[6px] flex items-center justify-center text-white shadow-[0px_0px_21px_rgba(0,168,50,0.32)] flex-shrink-0">
               <selectedEngine.icon size={14} />
             </div>
             <span className="flex-1 text-left truncate">{selectedEngine.name}</span>
-            <ChevronDown size={16} className="text-[#6B6B6B]" />
+            <ChevronDown size={16} className="text-[#6B6B6B] flex-shrink-0" />
           </button>
 
           {engineDropdownOpen && (
@@ -151,8 +151,8 @@ export default function ChatArea({
       <div className="flex-1 overflow-y-auto empty-state-bg">
         {!activeChat || activeChat.messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center p-6 text-center">
-            {/* Big Logo Icon - Exact 80x80, shadow, rounded-16px */}
-            <div className="w-20 h-20 bg-[#00A832] rounded-[16px] flex items-center justify-center mb-[24px] shadow-[0px_0px_58px_rgba(0,168,50,0.29)]">
+            {/* Big Logo Icon */}
+            <div className="w-20 h-20 bg-[#00A832] rounded-[16px] flex items-center justify-center mb-[24px] shadow-[0px_0px_58px_rgba(0,168,50,0.29)] flex-shrink-0">
               <Zap className="w-10 h-10 text-white fill-current" />
             </div>
 
@@ -160,11 +160,11 @@ export default function ChatArea({
               <h1 className="logo-text">DaivAI</h1>
             </div>
 
-            <p className="text-[#6B6B6B] text-base font-normal leading-6 mb-[48px]">
+            <p className="text-[#6B6B6B] text-base font-normal leading-6 mb-[48px] max-w-sm">
               Ask me anything. I'm here to help.
             </p>
 
-            <div className="grid grid-cols-2 gap-[12px] w-[413.56px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] w-full max-w-[413.56px]">
               {[
                 { title: 'Code Help', desc: 'Debug and write better code' },
                 { title: 'Explanations', desc: 'Understand complex topics' },
@@ -173,7 +173,7 @@ export default function ChatArea({
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="w-[200.78px] h-[66px] flex flex-col justify-center items-center px-[13px] bg-[#F1F3F5] border border-[#D1D5DB] rounded-[12px] hover:bg-gray-100 transition-colors cursor-pointer"
+                  className="flex flex-col justify-center items-center px-[13px] py-3 bg-[#F1F3F5] border border-[#D1D5DB] rounded-[12px] hover:bg-gray-100 transition-colors cursor-pointer"
                 >
                   <div className="text-sm font-normal text-[#1A1A1A] mb-[4px]">{item.title}</div>
                   <div className="text-[12px] leading-4 text-[#6B6B6B]">{item.desc}</div>
@@ -186,7 +186,7 @@ export default function ChatArea({
             {activeChat.messages.map((msg) => (
               <div
                 key={msg.id}
-                className="group flex items-start gap-3 px-6 py-4 hover:bg-gray-50 border-b border-gray-100 transition-colors"
+                className="group flex items-start gap-3 px-4 sm:px-6 py-4 hover:bg-gray-50 border-b border-gray-100 transition-colors"
               >
                 <div className="flex-shrink-0 mt-0.5">
                   {msg.type === 'ai' ? (
@@ -212,7 +212,7 @@ export default function ChatArea({
                       {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
                   </div>
-                  <div className="text-sm text-[#1A1A1A] leading-relaxed prose prose-sm max-w-none">
+                  <div className="text-sm text-[#1A1A1A] leading-relaxed prose prose-sm max-w-none break-words">
                     <ReactMarkdown>{msg.text}</ReactMarkdown>
                   </div>
                 </div>
@@ -237,7 +237,7 @@ export default function ChatArea({
             ))}
 
             {isTyping && (
-              <div className="flex items-start gap-3 px-6 py-4 border-b border-gray-100">
+              <div className="flex items-start gap-3 px-4 sm:px-6 py-4 border-b border-gray-100">
                 <div className="w-8 h-8 rounded-xl bg-[#00A832] text-white flex items-center justify-center">
                   <selectedEngine.icon size={16} />
                 </div>
@@ -256,14 +256,14 @@ export default function ChatArea({
         )}
       </div>
 
-      {/* Footer Area - Input fixed 127px height */}
-      <div className="h-[127px] px-[76.5px] pt-[13px] border-t border-[#D1D5DB] bg-white">
+      {/* Footer Area - Input Area */}
+      <div className="h-auto min-h-[127px] px-4 sm:px-8 lg:px-[76.5px] py-4 border-t border-[#D1D5DB] bg-white">
         <div className="w-full flex flex-col gap-2">
-          {/* Input Box - All content now INSIDE the rounded container */}
+          {/* Input Box */}
           <div className="bg-[#F1F3F5] rounded-[12px] shadow-[0px_0px_0px_1px_#D1D5DB] flex flex-col p-[12px] min-h-[78px] input-focus-shadow transition-all duration-200">
             {/* Top Row: Icons + Textarea */}
-            <div className="flex items-start gap-3 w-full">
-              <button className="mt-1 flex items-center justify-center text-[#A0A0A0] hover:text-gray-600 transition-colors">
+            <div className="flex items-start gap-2 sm:gap-3 w-full">
+              <button className="mt-1 flex items-center justify-center text-[#A0A0A0] hover:text-gray-600 transition-colors flex-shrink-0">
                 <Paperclip size={18} />
               </button>
 
@@ -276,7 +276,7 @@ export default function ChatArea({
                 rows={1}
               />
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                 <button className="p-1 flex items-center justify-center text-[#A0A0A0] hover:text-gray-600 transition-colors">
                   <Mic size={18} />
                 </button>
@@ -291,15 +291,15 @@ export default function ChatArea({
               </div>
             </div>
 
-            {/* Bottom Row: Instructions + Counter (Inside the box) */}
-            <div className="flex justify-between items-center mt-3">
-              <span className="mono-text !text-[12px]">Press Enter to send, Shift+Enter for new line</span>
-              <span className="mono-text !text-[12px]">{input.length} / {MAX_CHARS}</span>
+            {/* Bottom Row: Instructions + Counter */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-3 gap-1">
+              <span className="mono-text !text-[10px] sm:!text-[12px]">Press Enter to send, Shift+Enter for new line</span>
+              <span className="mono-text !text-[10px] sm:!text-[12px]">{input.length} / {MAX_CHARS}</span>
             </div>
           </div>
         </div>
 
-        <p className="mono-text text-center mt-2 !text-[12px]">
+        <p className="mono-text text-center mt-2 !text-[10px] sm:!text-[12px]">
           AI can make mistakes. Consider checking important information.
         </p>
       </div>
