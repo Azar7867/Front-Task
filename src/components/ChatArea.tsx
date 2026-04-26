@@ -155,15 +155,15 @@ export default function ChatArea({
             <div className="w-20 h-20 bg-[#00A832] rounded-[16px] flex items-center justify-center mb-[24px] shadow-[0px_0px_58px_rgba(0,168,50,0.29)]">
               <Zap className="w-10 h-10 text-white fill-current" />
             </div>
-            
+
             <div className="mb-[12px]">
               <h1 className="logo-text">DaivAI</h1>
             </div>
-            
+
             <p className="text-[#6B6B6B] text-base font-normal leading-6 mb-[48px]">
               Ask me anything. I'm here to help.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-[12px] w-[413.56px]">
               {[
                 { title: 'Code Help', desc: 'Debug and write better code' },
@@ -171,8 +171,8 @@ export default function ChatArea({
                 { title: 'Creative Writing', desc: 'Generate content and ideas' },
                 { title: 'Problem Solving', desc: 'Find solutions to challenges' },
               ].map((item) => (
-                <div 
-                  key={item.title} 
+                <div
+                  key={item.title}
                   className="w-[200.78px] h-[66px] flex flex-col justify-center items-center px-[13px] bg-[#F1F3F5] border border-[#D1D5DB] rounded-[12px] hover:bg-gray-100 transition-colors cursor-pointer"
                 >
                   <div className="text-sm font-normal text-[#1A1A1A] mb-[4px]">{item.title}</div>
@@ -266,7 +266,7 @@ export default function ChatArea({
               <button className="mt-1 flex items-center justify-center text-[#A0A0A0] hover:text-gray-600 transition-colors">
                 <Paperclip size={18} />
               </button>
-              
+
               <textarea
                 value={input}
                 onChange={(e) => { if (e.target.value.length <= MAX_CHARS) setInput(e.target.value); }}
@@ -275,7 +275,7 @@ export default function ChatArea({
                 className="flex-1 bg-transparent outline-none text-[#1A1A1A] text-sm resize-none mt-1 placeholder-[#6B6B6B]"
                 rows={1}
               />
-              
+
               <div className="flex items-center gap-2">
                 <button className="p-1 flex items-center justify-center text-[#A0A0A0] hover:text-gray-600 transition-colors">
                   <Mic size={18} />
@@ -283,9 +283,8 @@ export default function ChatArea({
                 <button
                   onClick={handleSend}
                   disabled={!input.trim()}
-                  className={`w-[30px] h-[30px] rounded-[8px] flex items-center justify-center transition-colors ${
-                    input.trim() ? 'bg-[#00A832] text-white shadow-md' : 'bg-[#E5E7EB] text-[#6B6B6B]'
-                  }`}
+                  className={`w-[30px] h-[30px] rounded-[8px] flex items-center justify-center transition-colors ${input.trim() ? 'bg-[#00A832] text-white shadow-md' : 'bg-[#E5E7EB] text-[#6B6B6B]'
+                    }`}
                 >
                   <Send size={16} />
                 </button>
@@ -299,7 +298,7 @@ export default function ChatArea({
             </div>
           </div>
         </div>
-        
+
         <p className="mono-text text-center mt-2 !text-[12px]">
           AI can make mistakes. Consider checking important information.
         </p>
